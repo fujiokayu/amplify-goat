@@ -10,6 +10,11 @@
             "StackName": "amplify-amplify-goat-test-154121",
             "StackId": "arn:aws:cloudformation:ap-northeast-1:837653919463:stack/amplify-amplify-goat-test-154121/82308880-5607-11ea-bd5d-0a949e552770",
             "AmplifyAppId": "d1axop1svn75on"
+        },
+        "categories": {
+            "auth": {
+                "amplifygoatdba445ac": {}
+            }
         }
     }
 }

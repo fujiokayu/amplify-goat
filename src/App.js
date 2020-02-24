@@ -31,7 +31,7 @@ const reducer = (state, action) => {
 
 async function createNewTodo() {
   const todo = { id: id, name: "Use AWS AppSync", description: "RealTime and Offline" };
-  await API.graphql(graphqlOperation(createTodo, { input: todo }));
+  await API.graphql(graphqlOperation(createTodo, { input: todo }))
 }
 
 function App() {
