@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import Amplify, { Auth } from 'aws-amplify';
-
+import { withAuthenticator } from 'aws-amplify-react';
 import API, { graphqlOperation } from '@aws-amplify/api';
 
 import { createTodo } from './graphql/mutations';
@@ -9,10 +9,7 @@ import { listTodos } from './graphql/queries';
 import awsconfig from './aws-exports';
 import './App.css';
 
-Amplify.configure({
-  Auth: awsconfig,
-  API: awsconfig
-});
+Amplify.configure(awsconfig);
 
 // Action Types
 const QUERY = 'QUERY';
@@ -60,4 +57,6 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App, {
+  // Render a sign out button once logged in
+  includeGreetings: true});
