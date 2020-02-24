@@ -1,9 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getMyType = /* GraphQL */ `
-  query GetMyType($id: ID!) {
-    getMyType(id: $id) {
+export const getTodo = /* GraphQL */ `
+  query GetTodo($id: ID!) {
+    getTodo(id: $id) {
       id
       title
       content
@@ -12,13 +12,13 @@ export const getMyType = /* GraphQL */ `
     }
   }
 `;
-export const listMyTypes = /* GraphQL */ `
-  query ListMyTypes(
-    $filter: ModelMyTypeFilterInput
+export const listTodos = /* GraphQL */ `
+  query ListTodos(
+    $filter: ModelTodoFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listMyTypes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         title
