@@ -21,11 +21,9 @@ export const listTodos = /* GraphQL */ `
     listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        title
-        content
-        price
-        rating
-      }
+        name
+        description
+        }
       nextToken
     }
   }

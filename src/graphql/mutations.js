@@ -8,10 +8,8 @@ export const createTodo = /* GraphQL */ `
   ) {
     createTodo(input: $input, condition: $condition) {
       id
-      title
-      content
-      price
-      rating
+      name
+      description
     }
   }
 `;
