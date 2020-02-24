@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react';
 import API, { graphqlOperation } from '@aws-amplify/api';
 
