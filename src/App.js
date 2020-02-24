@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
+import Amplify, { Auth } from 'aws-amplify';
 
 import API, { graphqlOperation } from '@aws-amplify/api';
-import PubSub from '@aws-amplify/pubsub';
 
 import { createTodo } from './graphql/mutations';
 import { listTodos } from './graphql/queries';
@@ -9,9 +9,10 @@ import { listTodos } from './graphql/queries';
 import awsconfig from './aws-exports';
 import './App.css';
 
-API.configure(awsconfig);
-PubSub.configure(awsconfig);
-var id;
+Amplify.configure({
+  Auth: awsconfig,
+  API: awsconfig
+});
 
 // Action Types
 const QUERY = 'QUERY';
@@ -30,8 +31,8 @@ const reducer = (state, action) => {
 };
 
 async function createNewTodo() {
-  const todo = { id: id, name: "Use AWS AppSync", description: "RealTime and Offline" };
-  await API.graphql(graphqlOperation(createTodo, { input: todo }))
+  const todo = { name: "Use AWS AppSync", description: "RealTime and Offline" };
+  await API.graphql(graphqlOperation(createTodo, { input: todo }));
 }
 
 function App() {
