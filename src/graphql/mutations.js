@@ -20,10 +20,8 @@ export const updateTodo = /* GraphQL */ `
   ) {
     updateTodo(input: $input, condition: $condition) {
       id
-      title
-      content
-      price
-      rating
+      name
+      description
     }
   }
 `;
@@ -34,10 +32,8 @@ export const deleteTodo = /* GraphQL */ `
   ) {
     deleteTodo(input: $input, condition: $condition) {
       id
-      title
-      content
-      price
-      rating
+      name
+      description
     }
   }
 `;
