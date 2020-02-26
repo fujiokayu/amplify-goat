@@ -18,6 +18,11 @@ const initialState = {
   todos: [],
 };
 
+async function getUserName() {
+  const tokens = await Amplify.Auth.currentSession();
+  return tokens.getIdToken().payload['cognito:username'];
+}
+
 const reducer = (state, action) => {
   switch (action.type) {
     case QUERY:
@@ -28,7 +33,8 @@ const reducer = (state, action) => {
 };
 
 async function createNewTodo() {
-  const todo = { name: "Use AWS AppSync", description: "RealTime and Offline" };
+  const userName = await getUserName();
+  const todo = { name: userName, description: "RealTime and Offline" };
   await API.graphql(graphqlOperation(createTodo, { input: todo }));
   window.location.reload();
 }
