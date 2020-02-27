@@ -8,6 +8,7 @@ import { listTodos } from './graphql/queries';
 
 import awsconfig from './aws-exports';
 import './App.css';
+import signUpConfig from './signUpConfig';
 
 Amplify.configure(awsconfig);
 
@@ -62,35 +63,6 @@ function App() {
     </div>
   );
 }
-const signUpConfig = {
-  hideAllDefaults: true,
-  signUpFields: [
-    {
-      label: 'UserName',
-      key: 'username',
-      required: true,
-      placeholder: 'UserName',
-      type: 'string',
-      displayOrder: 1
-    },
-    {
-      label: 'Email',
-      key: 'email',
-      required: true,
-      placeholder: 'Email',
-      type: 'email',
-      displayOrder: 2
-    },
-    {
-      label: 'Password',
-      key: 'password',
-      required: true,
-      placeholder: 'Password',
-      type: 'password',
-      displayOrder: 3
-    }
-  ]
-};
 
 export default withAuthenticator(App, {
   // Render a sign out button once logged in
