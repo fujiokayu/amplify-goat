@@ -3,12 +3,12 @@ import Amplify from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react';
 import API, { graphqlOperation } from '@aws-amplify/api';
 
-import { createTodo } from './graphql/mutations';
 import { listTodos } from './graphql/queries';
 
 import awsconfig from './aws-exports';
 import './App.css';
 import signUpConfig from './signUpConfig';
+import TodoForm from './form';
 
 Amplify.configure(awsconfig);
 
