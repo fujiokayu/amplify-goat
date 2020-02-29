@@ -19,11 +19,6 @@ const initialState = {
   todos: [],
 };
 
-async function getUserName() {
-  const tokens = await Amplify.Auth.currentSession();
-  return tokens.getIdToken().payload['cognito:username'];
-}
-
 const reducer = (state, action) => {
   switch (action.type) {
     case QUERY:
@@ -33,12 +28,6 @@ const reducer = (state, action) => {
   }
 };
 
-async function createNewTodo() {
-  const userName = await getUserName();
-  const todo = { name: userName, description: "RealTime and Offline" };
-  await API.graphql(graphqlOperation(createTodo, { input: todo }));
-  window.location.reload();
-}
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -54,8 +43,8 @@ function App() {
   return (
     <div className="App">
       <h1 class="siimple--color-primary">Amplify Goat</h1>
-      <button onClick={createNewTodo}>Add Todo</button>
       <div>
+      <TodoForm/>
         {state.todos.length > 0 ? 
           state.todos.map((todo) => <p key={todo.id}>{todo.name} : {todo.description}</p>) :
           <p>Add some todos!</p> 
