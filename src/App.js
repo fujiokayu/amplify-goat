@@ -53,6 +53,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 class="siimple--color-primary">Amplify Goat</h1>
       <button onClick={createNewTodo}>Add Todo</button>
       <div>
         {state.todos.length > 0 ? 
