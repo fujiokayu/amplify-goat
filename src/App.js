@@ -45,6 +45,7 @@ function App() {
       <h1 class="siimple--color-primary">Amplify Goat</h1>
       <div>
       <TodoForm/>
+      <div className="siimple--color-dark">
         {state.todos.length > 0 ? 
           state.todos.map((todo) => <p key={todo.id}>{todo.name} : {todo.description}</p>) :
           <p>Add some todos!</p> 
