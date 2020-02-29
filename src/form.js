@@ -27,7 +27,6 @@ export class TodoForm extends React.Component {
       const userName = await _getUserName();
       const todo = { name: userName, description: this.state.value };
       await API.graphql(graphqlOperation(createTodo, { input: todo }));
-      window.location.reload();
       
       console.log('submitted: ' + this.state.value);
       event.preventDefault();
