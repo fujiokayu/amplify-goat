@@ -24,6 +24,9 @@ export class TodoForm extends React.Component {
     }
   
     async handleSubmit(event) {
+      if (this.state.value === '' || this.state.value === undefined) {
+        return
+      }
       const userName = await _getUserName();
       const todo = { name: userName, description: this.state.value };
       await API.graphql(graphqlOperation(createTodo, { input: todo }));
