@@ -9,6 +9,7 @@ import awsconfig from './aws-exports'
 import './App.css'
 import signUpConfig from './signUpConfig'
 import TodoForm from './form'
+import List from './list'
 
 Amplify.configure(awsconfig)
 
@@ -44,17 +45,7 @@ function App() {
       <h1 className="siimple--color-primary">Amplify Goat</h1>
       <h4 className="siimple--color-dark">Vulnerable web app by using Amplify.</h4>
       <TodoForm />
-      <div className="siimple--color-dark">
-        {state.todos.length > 0 ? (
-          state.todos.map(todo => (
-            <p key={todo.id}>
-              {todo.name} : {todo.description}
-            </p>
-          ))
-        ) : (
-          <p>Add some todos!</p>
-        )}
-      </div>
+      <List todos={state.todos} />
     </div>
   )
 }
