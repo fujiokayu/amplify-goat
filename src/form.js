@@ -8,6 +8,10 @@ async function _getUserName() {
   return tokens.getIdToken().payload['cognito:username']
 }
 
+function _refreshPage() {
+  window.location.reload()
+}
+
 const TodoForm = () => {
   const [description, setDescription] = useState('')
 
@@ -17,6 +21,7 @@ const TodoForm = () => {
     const userName = await _getUserName()
     const todo = { name: userName, description: description }
     await API.graphql(graphqlOperation(createTodo, { input: todo }))
+    _refreshPage()
   }
 
   return (
