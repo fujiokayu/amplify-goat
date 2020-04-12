@@ -16,7 +16,7 @@ function App() {
       <h1 className="siimple--color-primary">Amplify Goat</h1>
       <h4 className="siimple--color-dark">Vulnerable web app by using Amplify.</h4>
       <TodoForm />
-      <List todos />
+      <List />
     </div>
   )
 }
