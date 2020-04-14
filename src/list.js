@@ -10,6 +10,9 @@ const initialState = {
   todos: [],
 }
 
+let descriptions = []
+let links = []
+
 const reducer = (state, action) => {
   switch (action.type) {
     case QUERY:
@@ -17,6 +20,11 @@ const reducer = (state, action) => {
     default:
       return state
   }
+}
+
+const containsURL = (todo) => {
+  if (todo.description.match(/:/) === null) return false
+  return true
 }
 
 const List = () => {
@@ -30,17 +38,36 @@ const List = () => {
     getData()
   }, [])
 
+  state.todos.forEach((items) => {
+    if (containsURL(items)) {
+      links.push(items)
+    } else descriptions.push(items)
+  })
+
   return (
     <div className="siimple--color-dark">
-      {state.todos.length > 0 ? (
-        state.todos.map((todo) => (
-          <p key={todo.id}>
-            {todo.name} : {todo.description}
-          </p>
-        ))
-      ) : (
-        <p>Add some todos!</p>
-      )}
+      <div>
+        {descriptions.length > 0 ? (
+          descriptions.map((todo) => (
+            <p key={todo.id}>
+              {todo.name} : {todo.description}
+            </p>
+          ))
+        ) : (
+          <p>Add some todos!</p>
+        )}
+      </div>
+      <div>
+        {links.length > 0 ? (
+          links.map((url) => (
+            <p key={url.id}>
+              {url.name} : <a href={url.description}>{url.description}</a>
+            </p>
+          ))
+        ) : (
+          <p>Add some Links!</p>
+        )}
+      </div>
     </div>
   )
 }
