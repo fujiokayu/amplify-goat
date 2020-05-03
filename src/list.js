@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 import API, { graphqlOperation } from '@aws-amplify/api'
-
+import Amplify from 'aws-amplify'
 import { listTodos } from './graphql/queries'
 
 // Action Types
@@ -8,6 +8,11 @@ const QUERY = 'QUERY'
 
 const initialState = {
   todos: [],
+}
+
+async function _getUserName() {
+  const tokens = await Amplify.Auth.currentSession()
+  return tokens.getIdToken().payload['cognito:username']
 }
 
 let descriptions = []
@@ -32,7 +37,14 @@ const List = () => {
 
   useEffect(() => {
     async function getData() {
-      const todoData = await API.graphql(graphqlOperation(listTodos))
+      const userName = await _getUserName()
+      const todoData = await API.graphql(
+        graphqlOperation(listTodos, {
+          filter: {
+            name: { eq: userName },
+          },
+        })
+      )
       dispatch({ type: QUERY, todos: todoData.data.listTodos.items })
     }
     getData()
