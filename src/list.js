@@ -27,8 +27,8 @@ const reducer = (state, action) => {
   }
 }
 
-const containsURL = (todo) => {
-  if (todo.description.match(/:/) === null) return false
+const _containsURL = (todo) => {
+  if (todo.description.match(/https:/) === null) return false
   return true
 }
 
@@ -51,7 +51,7 @@ const List = () => {
   }, [])
 
   state.todos.forEach((items) => {
-    if (containsURL(items)) {
+    if (_containsURL(items)) {
       links.push(items)
     } else descriptions.push(items)
   })
