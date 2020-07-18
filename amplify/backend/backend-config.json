@@ -7,11 +7,7 @@
 				"authConfig": {
 					"additionalAuthenticationProviders": [],
 					"defaultAuthentication": {
-						"authenticationType": "API_KEY",
-						"apiKeyConfig": {
-							"description": "Amplifygoat-test",
-							"apiKeyExpirationDays": "365"
-						}
+						"authenticationType": "AWS_IAM"
 					}
 				}
 			}
