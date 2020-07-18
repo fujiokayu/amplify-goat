@@ -66,7 +66,7 @@ const List = () => {
             </p>
           ))
         ) : (
-          <p>Add some todos!</p>
+          <p>Stage 1: Get admin's todos</p>
         )}
       </div>
       <div>
@@ -77,7 +77,7 @@ const List = () => {
             </p>
           ))
         ) : (
-          <p>Add some Links!</p>
+          <p>Add some todo!</p>
         )}
       </div>
     </div>
