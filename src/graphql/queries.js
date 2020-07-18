@@ -5,16 +5,14 @@ export const getTodo = /* GraphQL */ `
   query GetTodo($id: ID!) {
     getTodo(id: $id) {
       id
-      title
-      content
-      price
-      rating
+      name
+      description
     }
   }
 `
 export const listTodos = /* GraphQL */ `
-  query ListTodos($filter: ModelTodoFilterInput, $limit: Int, $nextToken: String) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  query ListTodos($filter: ModelTodoFilterInput, $nextToken: String) {
+    listTodos(filter: $filter, nextToken: $nextToken) {
       items {
         id
         name
